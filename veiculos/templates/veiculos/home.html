@@ -265,10 +265,48 @@ input[type="submit"]:hover {
   color: gold;
 }
 
+/* Estilo do Modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.close-btn {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #333;
+}
 
   </style>
 </head>
 <body>
+    {% include 'partials/modal.html' %}
     {% include 'partials/header.html' %}
 
   <div class="main-content">
@@ -369,6 +407,15 @@ input[type="submit"]:hover {
 	const kmInput = document.getElementById('kmRange');
 	const kmDisplay = document.getElementById('kmRangeValue');
 	const limparBtn = document.querySelector(".limparFiltros");
+  const perfil = document.getElementById("perfil")
+
+  function abrirModal() {
+    document.getElementById("modalPerfil").style.display = "block";
+  }
+  
+  function fecharModal() {
+    document.getElementById("modalPerfil").style.display = "none";
+  }
 
 	rangeInput.addEventListener('input', () => {
 	  const value = Number(rangeInput.value);
@@ -395,6 +442,14 @@ input[type="submit"]:hover {
 			const form = limparBtn.closest("form");
 			form.reset();
 			window.location.href = window.location.pathname;
+    
+    if (perfil) {
+      perfil.addEventListener("click", function(e) {
+        e.preventDefault();
+        window.location.href = "/perfil/";
+      });
+    }
+  
 		});
 
 		document.querySelectorAll('.star').forEach(star => {
