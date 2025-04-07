@@ -1,16 +1,475 @@
 [
 	{
 	  "model": "veiculos.carro",
-	  "pk": 1,
+	  "pk": 2,
+	  "fields": {
+		"marca": "Chevrolet",
+		"modelo": "Onix",
+		"ano_fabricacao": 2020,
+		"cor": "Branco",
+		"placa": "DEF-5678",
+		"tipo_combustivel": "F",
+		"quilometragem": 30000,
+		"valor": "45000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 3,
+	  "fields": {
+		"marca": "Volkswagen",
+		"modelo": "Gol",
+		"ano_fabricacao": 2018,
+		"cor": "Vermelho",
+		"placa": "GHI-9012",
+		"tipo_combustivel": "G",
+		"quilometragem": 60000,
+		"valor": "35000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 4,
+	  "fields": {
+		"marca": "Toyota",
+		"modelo": "Corolla",
+		"ano_fabricacao": 2021,
+		"cor": "Prata",
+		"placa": "JKL-3456",
+		"tipo_combustivel": "F",
+		"quilometragem": 15000,
+		"valor": "95000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 5,
+	  "fields": {
+		"marca": "Honda",
+		"modelo": "Civic",
+		"ano_fabricacao": 2022,
+		"cor": "Azul",
+		"placa": "MNO-7890",
+		"tipo_combustivel": "G",
+		"quilometragem": 10000,
+		"valor": "120000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 6,
+	  "fields": {
+		"marca": "BMW",
+		"modelo": "320i",
+		"ano_fabricacao": 2020,
+		"cor": "Preto",
+		"placa": "PQR-2345",
+		"tipo_combustivel": "G",
+		"quilometragem": 25000,
+		"valor": "200000.00",
+		"disponivel": false,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 7,
+	  "fields": {
+		"marca": "Audi",
+		"modelo": "A4",
+		"ano_fabricacao": 2019,
+		"cor": "Branco",
+		"placa": "STU-6789",
+		"tipo_combustivel": "F",
+		"quilometragem": 30000,
+		"valor": "210000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 8,
+	  "fields": {
+		"marca": "Mercedes-Benz",
+		"modelo": "C200",
+		"ano_fabricacao": 2021,
+		"cor": "Cinza",
+		"placa": "VWX-1234",
+		"tipo_combustivel": "G",
+		"quilometragem": 20000,
+		"valor": "250000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 9,
+	  "fields": {
+		"marca": "Fiat",
+		"modelo": "Argo",
+		"ano_fabricacao": 2018,
+		"cor": "Vermelho",
+		"placa": "YZA-5678",
+		"tipo_combustivel": "F",
+		"quilometragem": 40000,
+		"valor": "50000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 10,
+	  "fields": {
+		"marca": "Renault",
+		"modelo": "Sandero",
+		"ano_fabricacao": 2020,
+		"cor": "Prata",
+		"placa": "BCD-9012",
+		"tipo_combustivel": "G",
+		"quilometragem": 22000,
+		"valor": "55000.00",
+		"disponivel": false,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 11,
+	  "fields": {
+		"marca": "Nissan",
+		"modelo": "Versa",
+		"ano_fabricacao": 2019,
+		"cor": "Azul",
+		"placa": "EFG-3456",
+		"tipo_combustivel": "F",
+		"quilometragem": 35000,
+		"valor": "60000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 12,
+	  "fields": {
+		"marca": "Hyundai",
+		"modelo": "HB20",
+		"ano_fabricacao": 2021,
+		"cor": "Branco",
+		"placa": "HIJ-7890",
+		"tipo_combustivel": "G",
+		"quilometragem": 18000,
+		"valor": "70000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 13,
+	  "fields": {
+		"marca": "Kia",
+		"modelo": "Cerato",
+		"ano_fabricacao": 2020,
+		"cor": "Preto",
+		"placa": "KLM-2345",
+		"tipo_combustivel": "F",
+		"quilometragem": 26000,
+		"valor": "80000.00",
+		"disponivel": false,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 14,
+	  "fields": {
+		"marca": "Peugeot",
+		"modelo": "208",
+		"ano_fabricacao": 2018,
+		"cor": "Cinza",
+		"placa": "NOP-6789",
+		"tipo_combustivel": "G",
+		"quilometragem": 40000,
+		"valor": "65000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 15,
+	  "fields": {
+		"marca": "Citroen",
+		"modelo": "C3",
+		"ano_fabricacao": 2019,
+		"cor": "Vermelho",
+		"placa": "QRS-1234",
+		"tipo_combustivel": "F",
+		"quilometragem": 30000,
+		"valor": "68000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 16,
+	  "fields": {
+		"marca": "Subaru",
+		"modelo": "Impreza",
+		"ano_fabricacao": 2022,
+		"cor": "Azul",
+		"placa": "TUV-5678",
+		"tipo_combustivel": "G",
+		"quilometragem": 8000,
+		"valor": "180000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 17,
+	  "fields": {
+		"marca": "Mitsubishi",
+		"modelo": "Lancer",
+		"ano_fabricacao": 2020,
+		"cor": "Branco",
+		"placa": "WXY-9012",
+		"tipo_combustivel": "F",
+		"quilometragem": 15000,
+		"valor": "95000.00",
+		"disponivel": false,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 18,
+	  "fields": {
+		"marca": "Chevrolet",
+		"modelo": "Cruze",
+		"ano_fabricacao": 2018,
+		"cor": "Preto",
+		"placa": "ZAB-3456",
+		"tipo_combustivel": "G",
+		"quilometragem": 45000,
+		"valor": "75000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 19,
 	  "fields": {
 		"marca": "Ford",
-		"modelo": "Fusion",
+		"modelo": "Ka",
+		"ano_fabricacao": 2017,
+		"cor": "Amarelo",
+		"placa": "CDE-7890",
+		"tipo_combustivel": "F",
+		"quilometragem": 55000,
+		"valor": "40000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 20,
+	  "fields": {
+		"marca": "Honda",
+		"modelo": "Fit",
 		"ano_fabricacao": 2019,
-		"cor": "Preto",
-		"placa": "ABC-1234",
+		"cor": "Cinza",
+		"placa": "FGH-2345",
 		"tipo_combustivel": "G",
+		"quilometragem": 32000,
+		"valor": "65000.00",
+		"disponivel": false,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 21,
+	  "fields": {
+		"marca": "Toyota",
+		"modelo": "Yaris",
+		"ano_fabricacao": 2020,
+		"cor": "Vermelho",
+		"placa": "IJK-6789",
+		"tipo_combustivel": "F",
+		"quilometragem": 28000,
+		"valor": "60000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 22,
+	  "fields": {
+		"marca": "Volkswagen",
+		"modelo": "Polo",
+		"ano_fabricacao": 2021,
+		"cor": "Azul",
+		"placa": "LMN-1234",
+		"tipo_combustivel": "G",
+		"quilometragem": 20000,
+		"valor": "70000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 23,
+	  "fields": {
+		"marca": "Renault",
+		"modelo": "Logan",
+		"ano_fabricacao": 2018,
+		"cor": "Branco",
+		"placa": "OPQ-5678",
+		"tipo_combustivel": "F",
 		"quilometragem": 50000,
+		"valor": "55000.00",
+		"disponivel": false,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 24,
+	  "fields": {
+		"marca": "Nissan",
+		"modelo": "Sentra",
+		"ano_fabricacao": 2022,
+		"cor": "Preto",
+		"placa": "RST-9012",
+		"tipo_combustivel": "G",
+		"quilometragem": 12000,
+		"valor": "85000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 25,
+	  "fields": {
+		"marca": "Hyundai",
+		"modelo": "Accent",
+		"ano_fabricacao": 2020,
+		"cor": "Prata",
+		"placa": "UVW-3456",
+		"tipo_combustivel": "F",
+		"quilometragem": 27000,
+		"valor": "68000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 26,
+	  "fields": {
+		"marca": "Kia",
+		"modelo": "Rio",
+		"ano_fabricacao": 2019,
+		"cor": "Vermelho",
+		"placa": "XYZ-7890",
+		"tipo_combustivel": "G",
+		"quilometragem": 35000,
+		"valor": "60000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 27,
+	  "fields": {
+		"marca": "Peugeot",
+		"modelo": "308",
+		"ano_fabricacao": 2021,
+		"cor": "Azul",
+		"placa": "ABC-4321",
+		"tipo_combustivel": "F",
+		"quilometragem": 21000,
+		"valor": "75000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 28,
+	  "fields": {
+		"marca": "Citroen",
+		"modelo": "C4",
+		"ano_fabricacao": 2020,
+		"cor": "Branco",
+		"placa": "DEF-8765",
+		"tipo_combustivel": "G",
+		"quilometragem": 30000,
 		"valor": "80000.00",
+		"disponivel": false,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	},
+	{
+	  "model": "veiculos.carro",
+	  "pk": 29,
+	  "fields": {
+		"marca": "Subaru",
+		"modelo": "Legacy",
+		"ano_fabricacao": 2018,
+		"cor": "Cinza",
+		"placa": "GHI-2109",
+		"tipo_combustivel": "F",
+		"quilometragem": 48000,
+		"valor": "90000.00",
 		"disponivel": true,
 		"img": "/static/img/FordFusion.png",
 		"data_cadastro": "2025-04-07T00:00:00Z"

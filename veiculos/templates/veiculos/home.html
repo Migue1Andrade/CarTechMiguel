@@ -108,6 +108,7 @@ hr {
   border-radius: 8px;
   padding: 15px;
   max-width: 1400px;
+  height: 600px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -182,8 +183,8 @@ hr {
 
 .pagination-fixed {
   position: fixed;
-  bottom: 40%;
-  left: 50%;
+  bottom: 23%;
+  left: 57%;
   transform: translateX(-50%);
   background: #fff;
   border: 1px solid #ccc;
@@ -216,47 +217,91 @@ hr {
   cursor: not-allowed;
 }
 
+.limparFiltros .filtrar-btn,
+input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 5px;
+  display: inline-block;
+  max-width: 100px;
+  width: 80px;
+  height: 40px;
+  max-height: 30px;
+}
+
+.filtrar-btn {
+  margin-left: 5px;
+  width: 50px;
+  height: 30px;
+}
+
+.limparFiltros:hover .filtrar-btn,
+input[type="submit"]:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.limparFiltros .filtrar-btn {
+  margin-right: 5px;
+}
+
   </style>
 </head>
 <body>
     {% include 'partials/header.html' %}
 
   <div class="main-content">
-    <aside class="filters">
+	<aside class="filters">
 		<h3>Filtros de busca</h3>
-		<div class="filter-keywords">
-		  <label>Preco</label>
-		  <div class="range-container">
-			<input class="keyword-range" type="range" min="15000" max="200000" value="100000" step="500">
-			<span id="range-value">R$ 100.000</span>
+		<form method="GET" action="">
+		  <div class="filter-keywords">
+			<label>Preço</label>
+			<div class="range-container">
+			  <input class="keyword-range" name="preco" type="range" min="15000" max="200000" value="{{ request.GET.preco|default:100000 }}" step="500">
+			  <span id="range-value">R$ {{ request.GET.preco|default:"100000" }}</span>
+			</div>
 		  </div>
-		</div>
-		<hr>
-		<div class="filter-car-type">
-		  <label>Tipo</label>
-		  <select class="select-car-type">
-			<option value="all">Todos</option>
-			<option value="H">Híbrido</option>
-			<option value="E+">Elétrico</option>
-			<option value="D">Diesel</option>
-			<option value="G">Gasolina</option>
-			<option value="E">Etanol</option>
-			<option value="F">Flex</option>
-		  </select>
-		</div>
-		<hr>
-		<h3>Color</h3>
-		<div class="filter-colors">
-		  <input type="text" placeholder="Digite aqui a cor que deseja" class="color-input">
-		</div>
-		<hr>
-		<h3>Quilometragem</h3>
-		<div class="range-container km-range-container">
-			<input id="kmRange" class="km-range" type="range" min="0" max="200000" value="0" step="500">
-			<span id="kmRangeValue">0 km</span>
-		</div>
-		<hr>
-		<h3>Size</h3>
+		  <hr>
+		  <div class="filter-car-type">
+			<label>Tipo</label>
+			<select class="select-car-type" name="tipo">
+			  <option value="all" {% if request.GET.tipo == "all" %}selected{% endif %}>Todos</option>
+			  <option value="H" {% if request.GET.tipo == "H" %}selected{% endif %}>Híbrido</option>
+			  <option value="E+" {% if request.GET.tipo == "E+" %}selected{% endif %}>Elétrico</option>
+			  <option value="D" {% if request.GET.tipo == "D" %}selected{% endif %}>Diesel</option>
+			  <option value="G" {% if request.GET.tipo == "G" %}selected{% endif %}>Gasolina</option>
+			  <option value="E" {% if request.GET.tipo == "E" %}selected{% endif %}>Etanol</option>
+			  <option value="F" {% if request.GET.tipo == "F" %}selected{% endif %}>Flex</option>
+			</select>
+		  </div>
+		  <hr>
+		  <h3>Color</h3>
+		  <div class="filter-colors">
+			<input type="text" name="cor" placeholder="Digite aqui a cor que deseja" class="color-input" value="{{ request.GET.cor }}">
+		  </div>
+		  <hr>
+		  <h3>Quilometragem</h3>
+		  <div class="range-container km-range-container">
+			<input id="kmRange" class="km-range" name="km" type="range" min="0" max="200000" value="{{ request.GET.km|default:0 }}" step="500">
+			<span id="kmRangeValue">{{ request.GET.km|default:"0" }} km</span>
+		  </div>
+		  <hr>
+		  <h3>Marca/Modelo</h3>
+		  <div class="filter-keywords">
+			<input type="text" name="marca" placeholder="Marca/Modelo" class="keyword-input" value="{{ request.GET.marca }}">
+		  </div>
+		  <hr>
+		  <button class="limparFiltros">Limpar Filtros</button>
+		  <input type="submit" value="Filtrar" class="filtrar-btn">
+		</form>
 	  </aside>
 
 	  <section class="cars-section">
@@ -274,7 +319,7 @@ hr {
 			  </div>
 			</div>
 		  {% empty %}
-			<p>Nenhum carro disponível.</p>
+			<p>Nenhum carro foi encontrado, tente utilizar outro tipo de filtro, ou volte mais tarde.</p>
 		  {% endfor %}
 		</div>
 
@@ -310,6 +355,7 @@ hr {
 	const rangeValue = document.getElementById('range-value');
 	const kmInput = document.getElementById('kmRange');
 	const kmDisplay = document.getElementById('kmRangeValue');
+	const limparBtn = document.querySelector(".limparFiltros");
 
 	rangeInput.addEventListener('input', () => {
 	  const value = Number(rangeInput.value);
@@ -329,5 +375,15 @@ hr {
     }).format(value);
     kmDisplay.textContent = formatted + ' km';
   });
+
+  document.addEventListener("DOMContentLoaded", function() {
+	limparBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        const form = limparBtn.closest("form");
+
+        form.reset();
+        window.location.href = window.location.pathname;
+    });
+});
   </script>
 </html>
