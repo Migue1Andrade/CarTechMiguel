@@ -1,0 +1,333 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>CarTech | Home</title>
+  <style>
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #f6f6f6;
+}
+
+.select-car-type {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px 40px 10px 15px;
+  font-size: 16px;
+  color: #333;
+  transition: border-color 0.3s ease;
+  cursor: pointer;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+}
+
+.select-car-type:focus {
+  outline: none;
+  border-color: #007BFF;
+  box-shadow: 0 0 5px rgba(0,123,255,0.5);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  height: 60px;
+}
+
+.navbar-left h2 {
+  font-weight: 600;
+  color: #333;
+}
+
+.navbar-right ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-right ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.main-content {
+  display: flex;
+  padding: 20px;
+}
+
+.filters {
+  width: 250px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-right: 20px;
+}
+
+.filters h3 {
+  margin-bottom: 10px;
+}
+
+.filters label {
+  display: block;
+  margin: 5px 0;
+  row-gap: 50px;
+}
+
+.color-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+hr {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.cars-section {
+  flex: 1;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cars-section h2 {
+  margin-bottom: 20px;
+}
+
+.car-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.car-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 220px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.car-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin: 0 auto 10px;
+}
+
+
+.car-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.car-info .star {
+  cursor: pointer;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  padding: 20px 0;
+  margin-top: 20px;
+}
+
+.footer-section h4 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #666;
+  display: block;
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.pagination-fixed {
+  position: fixed;
+  bottom: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 4px;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pagination-fixed a,
+.pagination-fixed span {
+  display: inline-block;
+  margin: 0 5px;
+  text-decoration: none;
+  color: #333;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.pagination-fixed a:hover {
+  background-color: #f0f0f0;
+}
+
+.pagination-fixed .active-page {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.pagination-fixed .disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+  </style>
+</head>
+<body>
+    {% include 'partials/header.html' %}
+
+  <div class="main-content">
+    <aside class="filters">
+		<h3>Filtros de busca</h3>
+		<div class="filter-keywords">
+		  <label>Preco</label>
+		  <div class="range-container">
+			<input class="keyword-range" type="range" min="15000" max="200000" value="100000" step="500">
+			<span id="range-value">R$ 100.000</span>
+		  </div>
+		</div>
+		<hr>
+		<div class="filter-car-type">
+		  <label>Tipo</label>
+		  <select class="select-car-type">
+			<option value="all">Todos</option>
+			<option value="H">Híbrido</option>
+			<option value="E+">Elétrico</option>
+			<option value="D">Diesel</option>
+			<option value="G">Gasolina</option>
+			<option value="E">Etanol</option>
+			<option value="F">Flex</option>
+		  </select>
+		</div>
+		<hr>
+		<h3>Color</h3>
+		<div class="filter-colors">
+		  <input type="text" placeholder="Digite aqui a cor que deseja" class="color-input">
+		</div>
+		<hr>
+		<h3>Quilometragem</h3>
+		<div class="range-container km-range-container">
+			<input id="kmRange" class="km-range" type="range" min="0" max="200000" value="0" step="500">
+			<span id="kmRangeValue">0 km</span>
+		</div>
+		<hr>
+		<h3>Size</h3>
+	  </aside>
+
+	  <section class="cars-section">
+		<h2>Carros disponíveis</h2>
+		<div class="car-cards">
+		  {% for carro in page_obj %}
+			<div class="car-card">
+			  <div class="car-img">
+				<!-- Se tiver campo img no modelo, use {{ carro.img }}. Senão, placeholder. -->
+				<img src="{{ carro.img }}" alt="{{ carro.marca }} {{ carro.modelo }}">
+			  </div>
+			  <div class="car-info">
+				<span>{{ carro.marca }} {{ carro.modelo }}</span>
+				<span class="star">&#9734;</span>
+			  </div>
+			</div>
+		  {% empty %}
+			<p>Nenhum carro disponível.</p>
+		  {% endfor %}
+		</div>
+
+		<!-- Paginação em quadradinhos -->
+		<div class="pagination-fixed">
+			{% if page_obj.has_previous %}
+			  <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+			{% else %}
+			  <span class="disabled">Anterior</span>
+			{% endif %}
+
+			{% for num in page_obj.paginator.page_range %}
+			  {% if page_obj.number == num %}
+				<span class="active-page">{{ num }}</span>
+			  {% else %}
+				<a href="?page={{ num }}">{{ num }}</a>
+			  {% endif %}
+			{% endfor %}
+
+			{% if page_obj.has_next %}
+			  <a href="?page={{ page_obj.next_page_number }}">Próxima</a>
+			{% else %}
+			  <span class="disabled">Próxima</span>
+			{% endif %}
+		  </div>
+	  </section>
+
+  </div>
+  {% include 'partials/footer.html' %}
+</body>
+<script>
+	const rangeInput = document.querySelector('.keyword-range');
+	const rangeValue = document.getElementById('range-value');
+	const kmInput = document.getElementById('kmRange');
+	const kmDisplay = document.getElementById('kmRangeValue');
+
+	rangeInput.addEventListener('input', () => {
+	  const value = Number(rangeInput.value);
+	  const formatted = new Intl.NumberFormat('pt-BR', {
+		style: 'currency',
+		currency: 'BRL',
+		minimumFractionDigits: 0
+	  }).format(value);
+
+	  rangeValue.textContent = formatted;
+	});
+
+	kmInput.addEventListener('input', () => {
+    const value = Number(kmInput.value);
+    const formatted = new Intl.NumberFormat('pt-BR', {
+      minimumFractionDigits: 0
+    }).format(value);
+    kmDisplay.textContent = formatted + ' km';
+  });
+  </script>
+</html>

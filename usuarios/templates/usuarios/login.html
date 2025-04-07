@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>CarTech | Login</title>
+  <style>
+    * {
+		margin: 0; padding: 0; box-sizing: border-box;
+	}
+
+    body, html {
+		height: 100%; font-family: sans-serif;
+	}
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .left {
+      flex: 1;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-box {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 30px;
+      width: 300px;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      background: #222;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .login-box a {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      color: #333;
+      text-decoration: none;
+      font-size: 0.9em;
+    }
+
+    .right {
+      flex: 1;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+	<div class="container">
+	  <div class="left">
+		<form class="login-box" method="post">
+		  {% csrf_token %}
+		  <label for="email">Email</label>
+		  <input type="email" name="email" required>
+
+		  <label for="senha">Senha</label>
+		  <input type="password" name="senha" required>
+
+		  <button type="submit">Entrar</button>
+		  <a href="#">Esqueci minha senha?</a>
+
+		  <a href="{% url 'register' %}">Cadastre-se</a>
+		</form>
+	  </div>
+	  <div class="right" style="background-image: url('{% static 'img/cartech-banner.png' %}');"></div>
+	</div>
+  </body>
+</html>

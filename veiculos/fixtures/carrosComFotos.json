@@ -1,0 +1,19 @@
+[
+	{
+	  "model": "veiculos.carro",
+	  "pk": 1,
+	  "fields": {
+		"marca": "Ford",
+		"modelo": "Fusion",
+		"ano_fabricacao": 2019,
+		"cor": "Preto",
+		"placa": "ABC-1234",
+		"tipo_combustivel": "G",
+		"quilometragem": 50000,
+		"valor": "80000.00",
+		"disponivel": true,
+		"img": "/static/img/FordFusion.png",
+		"data_cadastro": "2025-04-07T00:00:00Z"
+	  }
+	}
+]
