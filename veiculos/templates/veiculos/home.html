@@ -253,6 +253,19 @@ input[type="submit"]:hover {
   margin-right: 5px;
 }
 
+.car-info .star {
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+
+.car-info .star:hover {
+  color: gold;
+}
+
+
   </style>
 </head>
 <body>
@@ -315,7 +328,7 @@ input[type="submit"]:hover {
 			  </div>
 			  <div class="car-info">
 				<span>{{ carro.marca }} {{ carro.modelo }}</span>
-				<span class="star">&#9734;</span>
+				<span class="star" data-id="{{ carro.id }}">&#9734;</span>
 			  </div>
 			</div>
 		  {% empty %}
@@ -369,21 +382,35 @@ input[type="submit"]:hover {
 	});
 
 	kmInput.addEventListener('input', () => {
-    const value = Number(kmInput.value);
-    const formatted = new Intl.NumberFormat('pt-BR', {
-      minimumFractionDigits: 0
-    }).format(value);
-    kmDisplay.textContent = formatted + ' km';
-  });
+		const value = Number(kmInput.value);
+		const formatted = new Intl.NumberFormat('pt-BR', {
+			minimumFractionDigits: 0
+		}).format(value);
+		kmDisplay.textContent = formatted + ' km';
+	});
 
-  document.addEventListener("DOMContentLoaded", function() {
-	limparBtn.addEventListener("click", function(e) {
-        e.preventDefault();
-        const form = limparBtn.closest("form");
+	document.addEventListener("DOMContentLoaded", function() {
+		limparBtn.addEventListener("click", function(e) {
+			e.preventDefault();
+			const form = limparBtn.closest("form");
+			form.reset();
+			window.location.href = window.location.pathname;
+		});
 
-        form.reset();
-        window.location.href = window.location.pathname;
-    });
-});
-  </script>
+		document.querySelectorAll('.star').forEach(star => {
+			const id = star.dataset.id;
+
+			if (localStorage.getItem(`favorite-${id}`) === "true") {
+				star.classList.add("filled");
+				star.innerHTML = '★';
+			}
+
+			star.addEventListener('click', () => {
+				const filled = star.classList.toggle('filled');
+				star.innerHTML = filled ? '★' : '☆';
+				localStorage.setItem(`favorite-${id}`, filled);
+			});
+		});
+	});
+</script>
 </html>
