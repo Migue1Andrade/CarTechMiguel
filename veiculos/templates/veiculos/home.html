@@ -5,568 +5,704 @@
   <meta charset="UTF-8">
   <title>CarTech | Home</title>
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
 
-    body {
-        font-family: sans-serif;
-        background-color: #f6f6f6;
-    }
+	body {
+		font-family: sans-serif;
+		background-color: #f6f6f6;
+	}
 
-    .select-car-type {
-        appearance: none;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        background-color: #f7f7f7;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        padding: 10px 40px 10px 15px;
-        font-size: 16px;
-        color: #333;
-        transition: border-color 0.3s ease;
-        cursor: pointer;
-        background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
-        background-repeat: no-repeat;
-        background-position: right 10px center;
-        background-size: 16px;
-    }
+	.select-car-type {
+		appearance: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		background-color: #f7f7f7;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		padding: 10px 40px 10px 15px;
+		font-size: 16px;
+		color: #333;
+		transition: border-color 0.3s ease;
+		cursor: pointer;
+		background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+		background-repeat: no-repeat;
+		background-position: right 10px center;
+		background-size: 16px;
+	}
 
-    .select-car-type:focus {
-        outline: none;
-        border-color: #007BFF;
-        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    }
+	.select-car-type:focus {
+		outline: none;
+		border-color: #007BFF;
+		box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+	}
 
-    .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 20px;
-        background-color: #fff;
-        border-bottom: 1px solid #ddd;
-        height: 60px;
-    }
+	.navbar {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 20px;
+		background-color: #fff;
+		border-bottom: 1px solid #ddd;
+		height: 60px;
+	}
 
-    .navbar-left h2 {
-        font-weight: 600;
-        color: #333;
-    }
+	.navbar-left h2 {
+		font-weight: 600;
+		color: #333;
+	}
 
-    .navbar-right ul {
-        list-style: none;
-        display: flex;
-        gap: 20px;
-    }
+	.navbar-right ul {
+		list-style: none;
+		display: flex;
+		gap: 20px;
+	}
 
-    .navbar-right ul li a {
-        text-decoration: none;
-        color: #333;
-    }
+	.navbar-right ul li a {
+		text-decoration: none;
+		color: #333;
+	}
 
-    .main-content {
-        display: flex;
-        padding: 20px;
-    }
+	.main-content {
+		display: flex;
+		padding: 20px;
+	}
 
-    .filters {
-        width: 250px;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 15px;
-        margin-right: 20px;
-    }
+	.filters {
+		width: 250px;
+		background-color: #fff;
+		border: 1px solid #ddd;
+		border-radius: 8px;
+		padding: 15px;
+		margin-right: 20px;
+		justify-content: center;
+		align-items: center;
+		max-width: 250px;
+	}
 
-    .filters h3 {
-        margin-bottom: 10px;
-    }
+	.filters h3 {
+		margin-bottom: 10px;
+	}
 
-    .filters label {
-        display: block;
-        margin: 5px 0;
-        row-gap: 50px;
-    }
+	.filters label {
+		display: block;
+		margin: 5px 0;
+		row-gap: 50px;
+	}
 
-    .color-input {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        margin-bottom: 20px;
-    }
+	.color-input {
+		width: 100%;
+		padding: 8px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		margin-bottom: 10px;
+	}
 
-    hr {
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
+	.filter-actions {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+	}
 
-    .cars-section {
-        flex: 1;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 15px;
-        max-width: 1400px;
-        height: 600px;
-        margin: 0 auto;
-        padding: 20px;
-    }
+	.limpar-filtros-btn {
+		background-color: #6c757d;
+		color: #fff;
+		border: none;
+		padding: 5px 10px;
+		font-size: 10px;
+		border-radius: 4px;
+		cursor: pointer;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		transition: background-color 0.3s ease, transform 0.2s ease;
+		width: 80px;
+		height: 30px;
+	}
 
-    .cars-section h2 {
-        margin-bottom: 20px;
-    }
+	.limpar-filtros-btn:hover {
+		background-color: #5a6268;
+		transform: scale(1.05);
+	}
 
-    .car-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 20px;
-        justify-items: center;
-    }
+	.filtrar-btn {
+		background-color: #007bff;
+		color: #fff;
+		border: none;
+		padding-bottom: 10px;
+		font-size: 10px;
+		border-radius: 4px;
+		cursor: pointer;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		transition: background-color 0.3s ease, transform 0.2s ease;
+	}
 
-    .car-card {
-        background-color: #fff;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        width: 220px;
-        padding: 20px;
-        text-align: center;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+	.filtrar-btn:hover {
+		background-color: #0056b3;
+		transform: scale(1.05);
+	}
 
-    .car-img img {
-        display: block;
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        margin: 0 auto 10px;
-    }
+	hr {
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
 
-    .car-info {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 8px;
-        font-size: 14px;
-    }
+	.cars-section {
+		flex: 1;
+		background-color: #fff;
+		border: 1px solid #ddd;
+		border-radius: 8px;
+		padding: 15px;
+		max-width: 1400px;
+		height: 600px;
+		margin: 0 auto;
+		padding: 20px;
+	}
 
-    .car-info .star {
-        cursor: pointer;
-    }
+	.cars-section h2 {
+		margin-bottom: 20px;
+	}
 
-    .footer {
-        display: flex;
-        justify-content: space-around;
-        background-color: #fff;
-        border-top: 1px solid #ddd;
-        padding: 20px 0;
-        margin-top: 20px;
-    }
+	.car-cards {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+		gap: 20px;
+		justify-items: center;
+	}
 
-    .footer-section h4 {
-        margin-bottom: 10px;
-        color: #333;
-    }
+	.car-card {
+		background-color: #fff;
+		border: 1px solid #ccc;
+		border-radius: 8px;
+		width: 220px;
+		padding: 20px;
+		text-align: center;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	}
 
-    .footer-section ul {
-        list-style: none;
-    }
+	.car-img img {
+		display: block;
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+		margin: 0 auto 10px;
+	}
 
-    .footer-section ul li a {
-        text-decoration: none;
-        color: #666;
-        display: block;
-        margin: 5px 0;
-        font-size: 14px;
-    }
+	.car-info {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 8px;
+		font-size: 14px;
+	}
 
-    .pagination-fixed {
-        position: fixed;
-        bottom: 23%;
-        left: 57%;
-        transform: translateX(-50%);
-        background: #fff;
-        border: 1px solid #ccc;
-        padding: 8px 12px;
-        border-radius: 4px;
-        box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-    }
+	.car-info .star {
+		cursor: pointer;
+	}
 
-    .pagination-fixed a,
-    .pagination-fixed span {
-        display: inline-block;
-        margin: 0 5px;
-        text-decoration: none;
-        color: #333;
-        border-radius: 4px;
-        padding: 4px 8px;
-    }
+	.footer {
+		display: flex;
+		justify-content: space-around;
+		background-color: #fff;
+		border-top: 1px solid #ddd;
+		padding: 20px 0;
+		margin-top: 20px;
+	}
 
-    .pagination-fixed a:hover {
-        background-color: #f0f0f0;
-    }
+	.footer-section h4 {
+		margin-bottom: 10px;
+		color: #333;
+	}
 
-    .pagination-fixed .active-page {
-        background-color: #007bff;
-        color: #fff;
-    }
+	.footer-section ul {
+		list-style: none;
+	}
 
-    .pagination-fixed .disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-    }
+	.footer-section ul li a {
+		text-decoration: none;
+		color: #666;
+		display: block;
+		margin: 5px 0;
+		font-size: 14px;
+	}
 
-    .limparFiltros .filtrar-btn,
-    input[type="submit"] {
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        padding: 5px 10px;
-        font-size: 14px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin-top: 5px;
-        display: inline-block;
-        max-width: 100px;
-        width: 80px;
-        height: 40px;
-        max-height: 30px;
-    }
+	.pagination-fixed {
+		position: fixed;
+		bottom: 30%;
+		left: 57%;
+		transform: translateX(-50%);
+		background: #fff;
+		border: 1px solid #ccc;
+		padding: 8px 12px;
+		border-radius: 4px;
+		box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+	}
 
-    .filtrar-btn {
-        margin-left: 5px;
-        width: 50px;
-        height: 30px;
-    }
+	.pagination-fixed a,
+	.pagination-fixed span {
+		display: inline-block;
+		margin: 0 5px;
+		text-decoration: none;
+		color: #333;
+		border-radius: 4px;
+		padding: 4px 8px;
+	}
 
-    .limparFiltros:hover .filtrar-btn,
-    input[type="submit"]:hover {
-        background-color: #0056b3;
-        transform: scale(1.05);
-    }
+	.pagination-fixed a:hover {
+		background-color: #f0f0f0;
+	}
 
-    .limparFiltros .filtrar-btn {
-        margin-right: 5px;
-    }
+	.pagination-fixed .active-page {
+		background-color: #007bff;
+		color: #fff;
+	}
 
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.6);
-        justify-content: center;
-        align-items: center;
-    }
+	.pagination-fixed .disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
 
-    .modal-content {
-        background-color: #fff;
-        margin: auto;
-        padding: 20px 30px;
-        border-radius: 8px;
-        width: 90%;
-        max-width: 500px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        position: relative;
-        animation: fadeIn 0.3s ease-in-out;
-    }
+	.limparFiltros .filtrar-btn,
+	input[type="submit"] {
+		background-color: #007bff;
+		color: #fff;
+		border: none;
+		padding: 5px 10px;
+		font-size: 14px;
+		border-radius: 4px;
+		cursor: pointer;
+		transition: background-color 0.3s ease, transform 0.2s ease;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		margin-top: 5px;
+		display: inline-block;
+		max-width: 100px;
+		width: 80px;
+		height: 40px;
+		max-height: 30px;
+	}
 
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: scale(0.8);
-        }
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
+	.filtrar-btn {
+		margin-left: 5px;
+		width: 50px;
+		height: 30px;
+	}
 
-    .closeBtn {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        font-size: 28px;
-        font-weight: bold;
-        color: #aaa;
-        cursor: pointer;
-    }
+	.limparFiltros:hover .filtrar-btn,
+	input[type="submit"]:hover {
+		background-color: #0056b3;
+		transform: scale(1.05);
+	}
 
-    .closeBtn:hover {
-        color: #000;
-    }
+	.limparFiltros .filtrar-btn {
+		margin-right: 5px;
+	}
 
-    .form-group {
-        margin-bottom: 15px;
-    }
+	.modal {
+		display: none;
+		position: fixed;
+		z-index: 1000;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		background-color: rgba(0, 0, 0, 0.6);
+		justify-content: center;
+		align-items: center;
+	}
 
-    .form-group label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
+	.modal-content {
+		background-color: #fff;
+		margin: auto;
+		padding: 20px 30px;
+		border-radius: 8px;
+		width: 90%;
+		max-width: 500px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		position: relative;
+		animation: fadeIn 0.3s ease-in-out;
+	}
 
-    .form-group input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: scale(0.8);
+		}
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
 
-    .btn {
-        background-color: #007BFF;
-        color: #fff;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-    }
+	.closeBtn {
+		position: fixed;
+		top: 10px;
+		right: 15px;
+		font-size: 28px;
+		font-weight: bold;
+		color: #aaa;
+		cursor: pointer;
+	}
 
-    .btn:hover {
-        background-color: #0056b3;
-    }
+	.closeBtn:hover {
+		color: #000;
+	}
 
-    .exit-button {
-        margin-top: 20px;
-        background-color: transparent;
-        border: none;
-        color: #fff;
-        font-size: 18px;
-        cursor: pointer;
-        text-decoration: underline;
-    }
+	.form-group {
+		margin-bottom: 15px;
+	}
 
-    .exit-button:hover {
-        color: #ddd;
-    }
+	.form-group label {
+		display: block;
+		font-weight: bold;
+		margin-bottom: 5px;
+	}
 
-    .error-message {
-        font-size: 14px;
-        margin-top: 5px;
-    }
+	.form-group input {
+		width: 100%;
+		padding: 10px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
 
-    .navbar-right {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-    }
+	.btn {
+		background-color: #007BFF;
+		color: #fff;
+		padding: 12px 20px;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		font-size: 16px;
+	}
 
-    .navbar-right button {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 14px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-    }
+	.btn:hover {
+		background-color: #0056b3;
+	}
 
-    .navbar-right button:hover {
-        background-color: #0056b3;
-        transform: scale(1.05);
-    }
+	.exit-button {
+		margin-top: 20px;
+		background-color: transparent;
+		border: none;
+		color: #fff;
+		font-size: 18px;
+		cursor: pointer;
+		text-decoration: underline;
+	}
+
+	.exit-button:hover {
+		color: #ddd;
+	}
+
+	.error-message {
+		font-size: 14px;
+		margin-top: 5px;
+	}
+
+	.navbar-right {
+		display: flex;
+		align-items: center;
+		gap: 300px;
+	}
+
+	.navbar-right .createPost {
+		padding: 10px 20px;
+		background-color: #aaa;
+		color: white;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		font-size: 8px;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		transition: background-color 0.3s ease, transform 0.2s ease;
+	}
+
+	.navbar-right .createPost:hover {
+		background-color: #0056b3;
+		transform: scale(1.05);
+	}
+
+	.createPost {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100px;
+		height: 30px;
+	}
+
+	.footer {
+		display: flex;
+		justify-content: space-between;
+		background-color: #f1f1f1;
+		border-top: 1px solid #ddd;
+		padding: 40px 60px;
+		flex-wrap: wrap;
+		gap: 30px;
+	}
+
+	.footer-section {
+		flex: 1;
+		min-width: 150px;
+	}
+
+	.footer-section h4 {
+		margin-bottom: 12px;
+		font-size: 16px;
+		color: #333;
+	}
+
+	.footer-section ul {
+		list-style: none;
+		padding: 0;
+	}
+
+	.footer-section ul li a {
+		text-decoration: none;
+		color: #555;
+		display: block;
+		margin: 6px 0;
+		font-size: 30px;
+		transition: color 0.2s ease;
+	}
+
+	.footer-section ul li a:hover {
+		color: #007bff;
+	}
+
+	.footer {
+		display: flex;
+		justify-content: space-between;
+		background-color: #f1f1f1;
+		border-top: 1px solid #ddd;
+		padding: 40px 60px;
+		flex-wrap: wrap;
+		gap: 30px;
+	}
+
+	.footer-section {
+		flex: 1;
+		min-width: 150px;
+	}
+
+	.footer-section h4 {
+		margin-bottom: 12px;
+		font-size: 16px;
+		color: #333;
+	}
+
+	.footer-section ul {
+		list-style: none;
+		padding: 0;
+	}
+
+	.footer-section ul li a {
+		text-decoration: none;
+		color: #555;
+		display: block;
+		margin: 6px 0;
+		font-size: 14px;
+		transition: color 0.2s ease;
+	}
+
+	.footer-section ul li a:hover {
+		color: #007bff;
+	}
 </style>
 </style>
 </head>
 <body>
-    {% include 'partials/header.html' %}
+	{% include 'partials/header.html' %}
   <div class="main-content">
-    <aside class="filters">
-        <h3>Filtros de busca</h3>
-        <form method="GET" action="">
-          <div class="filter-keywords">
-            <label>Preço</label>
-            <div class="range-container">
-              <input class="keyword-range" name="preco" type="range" min="15000" max="200000" value="{{ request.GET.preco|default:100000 }}" step="500">
-              <span id="range-value">R$ {{ request.GET.preco|default:"100000" }}</span>
-            </div>
-          </div>
-          <hr>
-          <div class="filter-car-type">
-            <label>Tipo</label>
-            <select class="select-car-type" name="tipo">
-              <option value="all" {% if request.GET.tipo == "all" %}selected{% endif %}>Todos</option>
-              <option value="H" {% if request.GET.tipo == "H" %}selected{% endif %}>Híbrido</option>
-              <option value="E+" {% if request.GET.tipo == "E+" %}selected{% endif %}>Elétrico</option>
-              <option value="D" {% if request.GET.tipo == "D" %}selected{% endif %}>Diesel</option>
-              <option value="G" {% if request.GET.tipo == "G" %}selected{% endif %}>Gasolina</option>
-              <option value="E" {% if request.GET.tipo == "E" %}selected{% endif %}>Etanol</option>
-              <option value="F" {% if request.GET.tipo == "F" %}selected{% endif %}>Flex</option>
-            </select>
-          </div>
-          <hr>
-          <h3>Color</h3>
-          <div class="filter-colors">
-            <input type="text" name="cor" placeholder="Digite aqui a cor que deseja" class="color-input" value="{{ request.GET.cor }}">
-          </div>
-          <hr>
-          <h3>Quilometragem</h3>
-          <div class="range-container km-range-container">
-            <input id="kmRange" class="km-range" name="km" type="range" min="0" max="200000" value="{{ request.GET.km|default:0 }}" step="500">
-            <span id="kmRangeValue">{{ request.GET.km|default:"0" }} km</span>
-          </div>
-          <hr>
-          <h3>Nome</h3>
-          <div class="filter-keywords">
-            <input type="text" name="marca" placeholder="digite aqui" class="keyword-input" value="{{ request.GET.marca }}">
-          </div>
-          <hr>
-          <button class="limparFiltros">Limpar Filtros</button>
-          <input type="submit" value="Filtrar" class="filtrar-btn">
-        </form>
-      </aside>
+	<aside class="filters">
+		<h3>Filtros de busca</h3>
+		<form method="GET" action="">
+		  <div class="filter-keywords">
+			<label>Preço</label>
+			<div class="range-container">
+			  <input class="keyword-range" name="preco" type="range" min="15000" max="200000" value="{{ request.GET.preco|default:100000 }}" step="500">
+			  <span id="range-value">R$ {{ request.GET.preco|default:"100000" }}</span>
+			</div>
+		  </div>
+		  <hr>
+		  <div class="filter-car-type">
+			<label>Tipo</label>
+			<select class="select-car-type" name="tipo">
+			  <option value="all" {% if request.GET.tipo == "all" %}selected{% endif %}>Todos</option>
+			  <option value="H" {% if request.GET.tipo == "H" %}selected{% endif %}>Híbrido</option>
+			  <option value="E+" {% if request.GET.tipo == "E+" %}selected{% endif %}>Elétrico</option>
+			  <option value="D" {% if request.GET.tipo == "D" %}selected{% endif %}>Diesel</option>
+			  <option value="G" {% if request.GET.tipo == "G" %}selected{% endif %}>Gasolina</option>
+			  <option value="E" {% if request.GET.tipo == "E" %}selected{% endif %}>Etanol</option>
+			  <option value="F" {% if request.GET.tipo == "F" %}selected{% endif %}>Flex</option>
+			</select>
+		  </div>
+		  <hr>
+		  <h3>Cor</h3>
+		  <div class="filter-colors">
+			<input type="text" name="cor" placeholder="Digite aqui a cor que deseja" class="color-input" value="{{ request.GET.cor }}">
+		  </div>
+		  <hr>
+		  <h3>Quilometragem</h3>
+		  <div class="range-container km-range-container">
+			<input id="kmRange" class="km-range" name="km" type="range" min="0" max="200000" value="{{ request.GET.km|default:0 }}" step="500">
+			<span id="kmRangeValue">{{ request.GET.km|default:"0" }} km</span>
+		  </div>
+		  <hr>
+		  <h3>Nome</h3>
+		  <div class="filter-keywords">
+			<input type="text" name="marca" placeholder="Digite aqui o carro que deseja" class="color-input" value="{{ request.GET.marca }}">
+		  </div>
+		  <hr>
+		  <div class="filter-actions">
+			<button type="button" class="limpar-filtros-btn">Limpar</button>
+			<input type="submit" value="Filtrar" class="filtrar-btn">
+		  </div>
+		</form>
+	  </aside>
 
-      <span id="openEditProfileModal">
-        {% include 'partials/modalEditarPerfil.html' %}
-      </span>
+	  <span id="openEditProfileModal">
+		{% include 'partials/modalEditarPerfil.html' %}
+	  </span>
 
-      <section class="cars-section">
-        <h2>Carros disponíveis</h2>
-        <div class="car-cards">
-          {% for carro in page_obj %}
-            <div class="car-card">
-              <div class="car-img">
-                <img src="{{ carro.img }}" alt="{{ carro.marca }} {{ carro.modelo }}">
-              </div>
-              <div class="car-info">
-                <span>{{ carro.marca }} {{ carro.modelo }}</span>
-                <span class="star">&#9734;</span>
-              </div>
-            </div>
-          {% empty %}
-            <p>Nenhum carro foi encontrado, tente utilizar outro tipo de filtro, ou volte mais tarde.</p>
-          {% endfor %}
-        </div>
+	  <section class="cars-section">
+		<h2>Carros disponíveis</h2>
+		<div class="car-cards">
+		  {% for carro in page_obj %}
+			<div class="car-card">
+			  <div class="car-img">
+				<img src="{{ carro.img }}" alt="{{ carro.marca }} {{ carro.modelo }}">
+			  </div>
+			  <div class="car-info">
+				<span>{{ carro.marca }} {{ carro.modelo }}</span>
+				<span class="star">&#9734;</span>
+			  </div>
+			</div>
+		  {% empty %}
+			<p>Nenhum carro foi encontrado, tente utilizar outro tipo de filtro, ou volte mais tarde.</p>
+		  {% endfor %}
+		</div>
 
-        <div class="pagination-fixed">
-            {% if page_obj.has_previous %}
-              <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
-            {% else %}
-              <span class="disabled">Anterior</span>
-            {% endif %}
+		<div class="pagination-fixed">
+			{% if page_obj.has_previous %}
+			  <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+			{% else %}
+			  <span class="disabled">Anterior</span>
+			{% endif %}
 
-            {% for num in page_obj.paginator.page_range %}
-              {% if page_obj.number == num %}
-                <span class="active-page">{{ num }}</span>
-              {% else %}
-                <a href="?page={{ num }}">{{ num }}</a>
-              {% endif %}
-            {% endfor %}
+			{% for num in page_obj.paginator.page_range %}
+			  {% if page_obj.number == num %}
+				<span class="active-page">{{ num }}</span>
+			  {% else %}
+				<a href="?page={{ num }}">{{ num }}</a>
+			  {% endif %}
+			{% endfor %}
 
-            {% if page_obj.has_next %}
-              <a href="?page={{ page_obj.next_page_number }}">Próxima</a>
-            {% else %}
-              <span class="disabled">Próxima</span>
-            {% endif %}
-          </div>
-      </section>
+			{% if page_obj.has_next %}
+			  <a href="?page={{ page_obj.next_page_number }}">Próxima</a>
+			{% else %}
+			  <span class="disabled">Próxima</span>
+			{% endif %}
+		  </div>
+	  </section>
 
   </div>
   {% include 'partials/footer.html' %}
 </body>
 <script>
-    const rangeInput = document.querySelector('.keyword-range');
-    const rangeValue = document.getElementById('range-value');
-    const kmInput = document.getElementById('kmRange');
-    const kmDisplay = document.getElementById('kmRangeValue');
-    const limparBtn = document.querySelector(".limparFiltros");
+	const rangeInput = document.querySelector('.keyword-range');
+	const rangeValue = document.getElementById('range-value');
+	const kmInput = document.getElementById('kmRange');
+	const kmDisplay = document.getElementById('kmRangeValue');
+	const limparBtn = document.querySelector(".limparFiltros");
 
-    const modal = document.getElementById('editProfileModal');
-    const closeBtn = document.querySelector('.closeBtn');
-    const exitBtn = document.getElementById('bnt');
-    const abrirModal = document.getElementById('abrirModal');
-    const editProfileForm = document.getElementById('editProfileForm');
-    const errorMessage = document.querySelector('.error-message');
+	const modal = document.getElementById('editProfileModal');
+	const closeBtn = document.querySelector('.closeBtn');
+	const exitBtn = document.getElementById('bnt');
+	const abrirModal = document.getElementById('abrirModal');
+	const editProfileForm = document.getElementById('editProfileForm');
+	const errorMessage = document.querySelector('.error-message');
 
-    rangeInput.addEventListener('input', () => {
-        const value = Number(rangeInput.value);
-        const formatted = new Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            currency: 'BRL',
-            minimumFractionDigits: 0
-        }).format(value);
+	rangeInput.addEventListener('input', () => {
+		const value = Number(rangeInput.value);
+		const formatted = new Intl.NumberFormat('pt-BR', {
+			style: 'currency',
+			currency: 'BRL',
+			minimumFractionDigits: 0
+		}).format(value);
 
-        rangeValue.textContent = formatted;
-    });
+		rangeValue.textContent = formatted;
+	});
 
-    kmInput.addEventListener('input', () => {
-        const value = Number(kmInput.value);
-        const formatted = new Intl.NumberFormat('pt-BR', {
-            minimumFractionDigits: 0
-        }).format(value);
-        kmDisplay.textContent = formatted + ' km';
-    });
+	kmInput.addEventListener('input', () => {
+		const value = Number(kmInput.value);
+		const formatted = new Intl.NumberFormat('pt-BR', {
+			minimumFractionDigits: 0
+		}).format(value);
+		kmDisplay.textContent = formatted + ' km';
+	});
 
-    limparBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        const form = limparBtn.closest("form");
+	limparBtn.addEventListener("click", function (e) {
+		e.preventDefault();
+		const form = limparBtn.closest("form");
 
-        form.reset();
-        window.location.href = window.location.pathname;
-    });
+		form.reset();
+		window.location.href = window.location.pathname;
+	});
 
-    const fecharModal = () => {
-        modal.style.display = 'none';
-        sessionStorage.removeItem('modalAberto');
+	const fecharModal = () => {
+		modal.style.display = 'none';
+		sessionStorage.removeItem('modalAberto');
 
-        const errorMessages = document.querySelectorAll('.error-message');
-        errorMessages.forEach(msg => {
-            msg.style.display = 'none';
-            msg.textContent = '';
-        });
+		const errorMessages = document.querySelectorAll('.error-message');
+		errorMessages.forEach(msg => {
+			msg.style.display = 'none';
+			msg.textContent = '';
+		});
 
-        document.getElementById('old-password').value = '';
-        document.getElementById('new-password').value = '';
-        document.getElementById('confirm-password').value = '';
-    }
+		document.getElementById('old-password').value = '';
+		document.getElementById('new-password').value = '';
+		document.getElementById('confirm-password').value = '';
+	}
 
-    abrirModal.addEventListener('click', () => {
-        modal.style.display = 'block';
-    });
+	abrirModal.addEventListener('click', () => {
+		modal.style.display = 'block';
+	});
 
-    closeBtn.addEventListener('click', () => {
-        fecharModal();
-    });
+	closeBtn.addEventListener('click', () => {
+		fecharModal();
+	});
 
-    exitBtn.addEventListener('click', () => {
-        fecharModal();
-    });
+	exitBtn.addEventListener('click', () => {
+		fecharModal();
+	});
 
-    editProfileForm.addEventListener('submit', function(e) {
-      const newPassword = document.getElementById('new-password').value;
-      const confirmPassword = document.getElementById('confirm-password').value;
+	editProfileForm.addEventListener('submit', function(e) {
+	  const newPassword = document.getElementById('new-password').value;
+	  const confirmPassword = document.getElementById('confirm-password').value;
 
-      if (newPassword !== confirmPassword) {
-        e.preventDefault();
-        errorMessage.style.display = 'block';
-        errorMessage.textContent = "A nova senha e a confirmação não coincidem. Por favor, verifique.";
-      }
-    });
+	  if (newPassword !== confirmPassword) {
+		e.preventDefault();
+		errorMessage.style.display = 'block';
+		errorMessage.textContent = "A nova senha e a confirmação não coincidem. Por favor, verifique.";
+	  }
+	});
 
-    {% if abrir_modal %}
-    window.addEventListener('load', () => {
-        modal.style.display = 'flex';
-    });
-    {% endif %}
+	{% if abrir_modal %}
+	window.addEventListener('load', () => {
+		modal.style.display = 'flex';
+	});
+	{% endif %}
 
-    window.addEventListener('click', function(e) {
-      if (e.target === modal) {
-        modal.style.display = 'none';
-      }
-    });
+	window.addEventListener('click', function(e) {
+	  if (e.target === modal) {
+		modal.style.display = 'none';
+	  }
+	});
 </script>
 </html>
