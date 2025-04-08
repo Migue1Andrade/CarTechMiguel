@@ -1,0 +1,39 @@
+<div id="editProfileModal" class="modal">
+    <div class="modal-content">
+      <span class="closeBtn">&times;</span>
+      <h2>Editar Perfil</h2>
+      <form id="editProfileForm" method="POST" action="{% url 'edit_profile' %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="nome">Nome</label>
+		  <input type="text" id="nome" name="nome" value="{{ nome|default:user.nome }}" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+		  <input type="email" id="email" name="email" value="{{ email|default:user.email }}" required>
+        </div>
+        <div class="form-group">
+          <label for="old-password">Senha Atual</label>
+          <input type="password" id="old-password" name="old_password" required>
+        </div>
+        <div class="form-group">
+          <label for="new-password">Nova Senha</label>
+          <input type="password" id="new-password" name="new_password" required>
+        </div>
+        <div class="form-group">
+          <label for="confirm-password">Confirmar Nova Senha</label>
+          <input type="password" id="confirm-password" name="confirm_password" required>
+        </div>
+        <p class="error-message" style="display: none; color: red;"></p>
+        <div class="form-group">
+          <button type="submit" class="btn">Salvar Alterações</button>
+        </div>
+      </form>
+	  {% if messages %}
+  		{% for message in messages %}
+      <p class="error-message" style="color: red;">{{ message }}</p>
+  	  {% endfor %}
+    {% endif %}
+    </div>
+    <button id="bnt" class="exit-button"></button>
+  </div>

@@ -23,13 +23,17 @@ def login_view(request):
 
 def register_view(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
-        senha = request.POST.get('senha')
-        nome = request.POST.get('nome')
+        email = request.POST.get('email', '').strip()
+        senha = request.POST.get('senha', '').strip()
+        nome = request.POST.get('nome', '').strip()
+
+        if not email or not senha or not nome:
+            messages.error(request, 'Por favor, preencha todos os campos.')
+            return render(request, 'usuarios/register.html', {'email': email, 'nome': nome})
 
         if Usuario.objects.filter(email=email).exists():
             messages.error(request, 'Já existe um usuário com este email.')
-            return render(request, 'usuarios/register.html')
+            return render(request, 'usuarios/register.html', {'email': email, 'nome': nome})
 
         try:
             user = Usuario.objects.create_user(
@@ -41,5 +45,6 @@ def register_view(request):
             return redirect('login')
         except Exception as e:
             messages.error(request, f'Erro ao criar usuário: {e}')
+            return render(request, 'usuarios/register.html', {'email': email, 'nome': nome})
 
     return render(request, 'usuarios/register.html')
