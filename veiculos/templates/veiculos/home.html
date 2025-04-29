@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -514,7 +515,6 @@
 		color: #007bff;
 	}
 </style>
-</style>
 </head>
 <body>
 	{% include 'partials/header.html' %}
@@ -615,18 +615,19 @@
   {% include 'partials/footer.html' %}
 </body>
 <script>
-	const rangeInput = document.querySelector('.keyword-range');
 	const rangeValue = document.getElementById('range-value');
 	const kmInput = document.getElementById('kmRange');
 	const kmDisplay = document.getElementById('kmRangeValue');
-	const limparBtn = document.querySelector(".limparFiltros");
-
 	const modal = document.getElementById('editProfileModal');
-	const closeBtn = document.querySelector('.closeBtn');
 	const exitBtn = document.getElementById('bnt');
 	const abrirModal = document.getElementById('abrirModal');
 	const editProfileForm = document.getElementById('editProfileForm');
+
 	const errorMessage = document.querySelector('.error-message');
+	const rangeInput = document.querySelector('.keyword-range');
+	const limparBtn = document.querySelector(".limpar-filtros-btn");
+	const closeBtn = document.querySelector('.closeBtn');
+	const createPostBtn = document.querySelector('.createPost');
 
 	rangeInput.addEventListener('input', () => {
 		const value = Number(rangeInput.value);
@@ -647,12 +648,17 @@
 		kmDisplay.textContent = formatted + ' km';
 	});
 
-	limparBtn.addEventListener("click", function (e) {
+	limparBtn.addEventListener('click', (e) => {
 		e.preventDefault();
 		const form = limparBtn.closest("form");
 
 		form.reset();
 		window.location.href = window.location.pathname;
+	});
+
+	createPostBtn.addEventListener('click', () => {
+		console.log('Botão de criar postagem clicado');
+		window.location.href = '/create/post';
 	});
 
 	const fecharModal = () => {
@@ -704,5 +710,6 @@
 		modal.style.display = 'none';
 	  }
 	});
+
 </script>
 </html>

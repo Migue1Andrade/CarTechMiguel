@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	body {
+		font-family: sans-serif;
+		background-color: #f6f6f6;
+	}
+
+	.navbar {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 20px;
+		background-color: #fff;
+		border-bottom: 1px solid #ddd;
+		height: 60px;
+	}
+
+	.navbar-left h2 {
+		font-weight: 600;
+		color: #333;
+	}
+
+	.navbar-right ul {
+		list-style: none;
+		display: flex;
+		gap: 20px;
+	}
+
+	.navbar-right ul li a {
+		text-decoration: none;
+		color: #333;
+	}
+
+	.navbar-right {
+		display: flex;
+		align-items: center;
+		gap: 300px;
+	}
+
+	.navbar-right .createPost {
+		padding: 10px 20px;
+		background-color: #aaa;
+		color: white;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		font-size: 8px;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		transition: background-color 0.3s ease, transform 0.2s ease;
+	}
+
+	.navbar-right .createPost:hover {
+		background-color: #0056b3;
+		transform: scale(1.05);
+	}
+
+	.createPost {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100px;
+		height: 30px;
+	}
+
+	.footer {
+		display: flex;
+		justify-content: space-between;
+		background-color: #f1f1f1;
+		border-top: 1px solid #ddd;
+		padding: 40px 60px;
+		flex-wrap: wrap;
+		gap: 30px;
+	}
+
+	.footer-section {
+		flex: 1;
+		min-width: 150px;
+	}
+
+	.footer-section h4 {
+		margin-bottom: 12px;
+		font-size: 16px;
+		color: #333;
+	}
+
+	.footer-section ul {
+		list-style: none;
+		padding: 0;
+	}
+
+	.footer-section ul li a {
+		text-decoration: none;
+		color: #555;
+		display: block;
+		margin: 6px 0;
+		font-size: 30px;
+		transition: color 0.2s ease;
+	}
+
+	.footer-section ul li a:hover {
+		color: #007bff;
+	}
+
+	.footer {
+		display: flex;
+		justify-content: space-between;
+		background-color: #f1f1f1;
+		border-top: 1px solid #ddd;
+		padding: 40px 60px;
+		flex-wrap: wrap;
+		gap: 30px;
+	}
+
+	.footer-section {
+		flex: 1;
+		min-width: 150px;
+	}
+
+	.footer-section h4 {
+		margin-bottom: 12px;
+		font-size: 16px;
+		color: #333;
+	}
+
+	.footer-section ul {
+		list-style: none;
+		padding: 0;
+	}
+
+	.footer-section ul li a {
+		text-decoration: none;
+		color: #555;
+		display: block;
+		margin: 6px 0;
+		font-size: 14px;
+		transition: color 0.2s ease;
+	}
+
+	.footer-section ul li a:hover {
+		color: #007bff;
+	}
+
+	.form-container {
+		max-width: 700px;
+		margin: 40px auto;
+		background: #fff;
+		padding: 25px;
+		border-radius: 12px;
+		box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+	}
+
+	.form-container h2 {
+		font-size: 24px;
+		margin-bottom: 20px;
+		text-align: center;
+	}
+
+	.form-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 20px;
+	}
+
+	.form-group {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.form-group label {
+		font-weight: 600;
+		margin-bottom: 5px;
+	}
+
+	.form-group input,
+	.form-group select,
+	.form-group textarea {
+		padding: 10px;
+		border-radius: 6px;
+		border: 1px solid #ccc;
+		font-size: 14px;
+	}
+
+	.form-group textarea {
+		resize: vertical;
+		min-height: 80px;
+	}
+
+	.form-submit {
+		grid-column: 1 / -1;
+		text-align: center;
+		margin-top: 20px;
+	}
+
+	.form-submit button {
+		padding: 12px 30px;
+		font-size: 16px;
+		background-color: #444;
+		color: #fff;
+		border: none;
+		border-radius: 8px;
+		cursor: pointer;
+	}
+
+	.form-submit button:hover {
+		background-color: #000;
+	}
+
+	.create-post-title {
+		text-align: center;
+		font-size: 24px;
+		margin-bottom: 20px;
+	}
+
+	.pagination-modern {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin: 40px auto 60px auto;
+	}
+
+	.page-btn {
+		padding: 8px 14px;
+		font-size: 14px;
+		border-radius: 6px;
+		border: 1px solid #ccc;
+		background-color: #fff;
+		color: #333;
+		text-decoration: none;
+		transition: all 0.2s ease-in-out;
+		min-width: 36px;
+		text-align: center;
+		cursor: pointer;
+	}
+
+	.page-btn:hover {
+		background-color: #007bff;
+		color: #fff;
+		border-color: #007bff;
+	}
+
+	.page-btn.active {
+		background-color: #007bff;
+		color: #fff;
+		font-weight: bold;
+		cursor: default;
+	}
+
+	.page-btn.disabled {
+		opacity: 0.4;
+		cursor: not-allowed;
+		background-color: #eee;
+		border-color: #ddd;
+	}
+
+	.cars-section {
+		flex: 1;
+		background-color: #fff;
+		border: 1px solid #ddd;
+		border-radius: 8px;
+		padding: 15px;
+		max-width: 1400px;
+		height: 600px;
+		margin: 0 auto;
+		padding: 20px;
+	}
+
+	.cars-section h2 {
+		margin-bottom: 20px;
+	}
+
+	.car-cards {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: 20px;
+	}
+
+	.car-card {
+		background-color: #fff;
+		border: 1px solid #ccc;
+		border-radius: 8px;
+		width: 300px;
+		height: 320px;
+		padding: 15px;
+		text-align: center;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.car-img img {
+		width: 100%;
+		height: 120px;
+		object-fit: cover;
+		margin-bottom: 10px;
+		border-radius: 4px;
+	}
+
+	.car-info {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 8px;
+		font-size: 14px;
+	}
+
+	.cards-wrapper {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 20px;
+	}
+</style>
+<body>
+	{% include 'partials/header.html' %}
+
+	<div class="form-container">
+		<h2 class="create-post-title">Crie sua nova Postagem</h2>
+		<form method="post">
+			{% csrf_token %}
+			<div class="form-grid">
+				<div class="form-group">
+					<label for="marca">Marca:</label>
+					<input type="text" name="marca" id="marca">
+				</div>
+
+				<div class="form-group">
+					<label for="modelo">Modelo:</label>
+					<input type="text" name="modelo" id="modelo">
+				</div>
+
+				<div class="form-group">
+					<label for="ano_fabricacao">Ano de Fabricação:</label>
+					<input type="number" name="ano_fabricacao" id="ano_fabricacao">
+				</div>
+
+				<div class="form-group">
+					<label for="cor">Cor:</label>
+					<input type="text" name="cor" id="cor">
+				</div>
+
+				<div class="form-group">
+					<label for="placa">Placa:</label>
+					<input type="text" name="placa" id="placa">
+				</div>
+
+				<div class="form-group">
+					<label for="tipo_combustivel">Tipo de Combustível:</label>
+					<select name="tipo_combustivel" id="tipo_combustivel">
+						<option value="G">Gasolina</option>
+						<option value="E">Etanol</option>
+						<option value="F">Flex</option>
+						<option value="D">Diesel</option>
+						<option value="E+">Elétrico</option>
+						<option value="H">Híbrido</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="quilometragem">Quilometragem:</label>
+					<input type="number" name="quilometragem" id="quilometragem">
+				</div>
+
+				<div class="form-group">
+					<label for="valor">Valor (R$):</label>
+					<input type="number" step="0.01" name="valor" id="valor">
+				</div>
+
+				<div class="form-group" style="grid-column: 1 / -1;">
+					<label for="descricao">Descrição:</label>
+					<textarea name="descricao" id="descricao" placeholder="Detalhes do carro..."></textarea>
+				</div>
+
+				<div class="form-group" style="grid-column: 1 / -1;">
+					<label for="img">Imagem (URL):</label>
+					<input type="url" name="img" id="img" placeholder="https://...">
+				</div>
+
+				<div class="form-submit">
+					<button type="submit">Publicar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+<hr>
+
+<h3 style="margin: 40px 0 20px 0; justify-self: center;">Minhas Postagens</h3>
+<div class="cars-wrapper">
+	<div class="car-cards">
+		{% for carro in page_obj %}
+		<div class="car-card">
+			<div class="car-img">
+				<img src="{{ carro.img }}" alt="{{ carro.marca }} {{ carro.modelo }}">
+			</div>
+			<div class="car-info" style="flex-direction: column; align-items: flex-start;">
+				<strong>{{ carro.marca }} {{ carro.modelo }} ({{ carro.ano_fabricacao }})</strong>
+				<span>R$ {{ carro.valor }}</span>
+				<span>Cor: {{ carro.cor }} | KM: {{ carro.quilometragem }} | Combustível: {{ carro.get_tipo_combustivel_display }}</span>
+				<span>Placa: {{ carro.placa }}</span>
+				<p>{{ carro.descricao }}</p>
+				<small>Publicado em {{ carro.data_cadastro|date:"d/m/Y H:i" }}</small>
+			</div>
+		</div>
+		{% empty %}
+		<p>Você ainda não cadastrou nenhum carro.</p>
+		{% endfor %}
+	</div>
+	<div class="pagination-modern">
+		{% if page_obj.has_previous %}
+		<a href="?page={{ page_obj.previous_page_number }}" class="page-btn">←</a>
+		{% else %}
+		<span class="page-btn disabled">←</span>
+		{% endif %}
+
+		{% for num in page_obj.paginator.page_range %}
+		{% if page_obj.number == num %}
+		<span class="page-btn active">{{ num }}</span>
+		{% elif num > page_obj.number|add:"-3" and num < page_obj.number|add:"3" %}
+		<a href="?page={{ num }}" class="page-btn">{{ num }}</a>
+		{% endif %}
+		{% endfor %}
+
+		{% if page_obj.has_next %}
+		<a href="?page={{ page_obj.next_page_number }}" class="page-btn">→</a>
+		{% else %}
+		<span class="page-btn disabled">→</span>
+		{% endif %}
+	</div>
+</div>
+</body>
+</html>

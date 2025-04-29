@@ -3,7 +3,12 @@
 		<h2>CarTech</h2>
 	</div>
 	<div class="navbar-right">
-		<button class="createPost">Postar</button>
+		{% if request.path == '/home/' %}
+			<button class="createPost">Postar</button>
+		{% endif %}
+		{% if request.path == '/create/post' %}
+			<button class="createPost">Home</button>
+		{% endif %}
 		<ul>
 			<li><p id="abrirModal" style="cursor:pointer">Perfil</p></li>
 			<li><a href="#">Solutions</a></li>

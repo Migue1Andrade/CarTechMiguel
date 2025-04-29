@@ -89,3 +89,43 @@ def edit_profile(request):
         return redirect('home')
 
     return redirect('home')
+
+@login_required(login_url='/login/')
+def create_post(request):
+    if request.method == 'POST':
+        marca = request.POST.get('marca')
+        modelo = request.POST.get('modelo')
+        ano_fabricacao = request.POST.get('ano_fabricacao')
+        cor = request.POST.get('cor')
+        placa = request.POST.get('placa')
+        tipo_combustivel = request.POST.get('tipo_combustivel')
+        quilometragem = request.POST.get('quilometragem')
+        valor = request.POST.get('valor')
+        descricao = request.POST.get('descricao') or "Sem descrição"
+        img = request.POST.get('img') or "https://via.placeholder.com/150"
+
+        Carro.objects.create(
+            marca=marca,
+            modelo=modelo,
+            ano_fabricacao=int(ano_fabricacao),
+            cor=cor,
+            placa=placa,
+            tipo_combustivel=tipo_combustivel,
+            quilometragem=int(quilometragem),
+            valor=float(valor),
+            descricao=descricao,
+            img=img,
+            usuario=request.user
+        )
+
+        return redirect('home')
+
+    meus_carros = Carro.objects.filter(usuario=request.user).order_by('-data_cadastro')
+    paginator = Paginator(meus_carros, 5)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'veiculos/create-post.html', {
+        'page_obj': page_obj
+    })

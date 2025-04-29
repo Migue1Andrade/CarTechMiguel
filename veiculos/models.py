@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 class Carro(models.Model):
     COMBUSTIVEL_CHOICES = [
@@ -22,6 +23,7 @@ class Carro(models.Model):
     descricao = models.TextField(blank=True, default="Sem descrição")
     data_cadastro = models.DateTimeField(auto_now_add=True)
     img = models.URLField(default="https://via.placeholder.com/150")
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='carros')
 
     def __str__(self):
         return f"{self.marca} {self.modelo} ({self.placa})"
